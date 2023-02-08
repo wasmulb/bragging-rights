@@ -2,9 +2,9 @@ const { Model, DataTypes} = require('sequelize');
 const bcrypt = require('bcrypt')
 const sequelize = require('../config/connection');
 
-class User extends Model {}
+class Partners extends Model {}
 
-User.init(
+Partners.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -12,25 +12,9 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    username: {
+    user: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
-    },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: true,
-      },
-    },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [8],
-      },
     },
   },
   {
@@ -38,8 +22,8 @@ User.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'user',
+    modelName: 'partners',
   }
 );
 
-module.exports = User;
+module.exports = Partners;
