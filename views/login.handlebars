@@ -1,23 +1,20 @@
-<h2>Login</h2>
-
-<form class="form login-form">
-    {{#if logged_in}}
-
-  <div class="form-group">
-    <label for="email-login">Email:</label>
-    <input class="form-input" type="text" id="login-email" />
+<div class="column">
+<h2 class="title pb-4">Login</h2><hr>
+<form class="login-form">
+  <div>
+    <label for="email-login">email:</label>
+    <input type="text" id="email-login" />
   </div>
-  <div class="form-group">
-    <label for="password-login">Password:</label>
-    <input class="form-input" type="password" id="login-email" />
+  <div>
+    <label for="password-login">password:</label>
+    <input type="password" id="password-login" />
   </div>
-  {{/if}}
-
-  <div class="form-group">
-    <button class="btn btn-primary" type="submit">login</button>
+  <div>
+    <button type="submit" class="btn btn-primary">login</button>
+    <a href="/signup"><button type="button" class="btn btn-primary">signup</button></a>
   </div>
-
-
+</form>
+</div>
 </form>
 
 <script src="/js/login.js"></script>
