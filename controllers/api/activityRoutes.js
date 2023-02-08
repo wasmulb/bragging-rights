@@ -6,7 +6,7 @@ router.get('/activity', async(req,res)=>{
     try{
         const activtyData = await Activities.findByPk(req.params.id)
 
-        res.render('activity', {Activities, loggedIn: req.session.loggedIn});
+        res.render('activity', {Activities, logged_in: true});
     } catch(err){
         console.log(err);
         res.status(500).json(err);
@@ -18,11 +18,15 @@ router.get('/activity', async(req,res)=>{
 router.get('/login', (req, res) => {
     // If the user is already logged in, redirect to the homepage
     if (req.session.loggedIn) {
-      res.redirect('/');
+      res.render('login', {'logged_in': true});
+
       return;
     }
     // Otherwise, render the 'login' template
-    res.render('login');
+    // res.render('login');
+    req.session.loggedIn = true;
+    res
+    .render('login', {logged_in})
   });
   
  module.exports = router;
