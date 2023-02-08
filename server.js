@@ -1,10 +1,11 @@
 const express = require('express');
 const routes = require('./controllers')
 const session = require('express-session');
-const handlebars = require('express-handlebars');
 const path =require('path');
 const mysql = require('mysql2');
 const sequelize = require('./config/connection');
+const exphbs = require('express-handlebars')
+const hbs =exphbs.create({});
 
 const PORT = 3001;
 
@@ -21,6 +22,13 @@ if (app.get('env') === 'production') {
   app.set('trust proxy', 1) // trust first proxy
   sess.cookie.secure = true // serve secure cookies
 }
+
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+
+app.get('/', (req, res) => {
+  res.render('layouts/main.handlebars');
+});
 
 app.use(session(sess))
 

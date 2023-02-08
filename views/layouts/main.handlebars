@@ -14,12 +14,15 @@
             <header class="container-fluid text-center py-4 custom">
                 <h1>
                     Bragging Rights! 
+                      
+                    
                 </h1>
             <!-- Only display the logout button if the user is logged in -->
-            {{#if logged_in}}
+         
             <nav>
                 <button class="btn-danger" id="logout">logout</button>
             </nav>
+          
             </header>
            <main>
                 {{{body}}}
@@ -29,8 +32,8 @@
            </footer>
         </div>
           <!-- Only include the logout script if the user is logged in -->
-            {{#if logged_in}}
+          
                 <script src="/js/logout.js"></script>
-            {{/if}}
+           
     </body>
 </html>
