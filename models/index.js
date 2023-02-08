@@ -18,11 +18,17 @@ Partners.hasMany(Activities, {
     foreignKey: 'partners_id'
 })
 
+Event.belongsTo(Activities, {
+    foreignKey: 'event_id'
+})
 
-
+Activities.hasMany(Events, {
+    foreignKey: 'activities_id'
+})
 
 module.exports = {
   User,
   Partners,
-  Activities
+  Activities,
+  Event
 };
