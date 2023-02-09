@@ -18,4 +18,11 @@ router.get('/signup', (req,res)=>{
     res.render('signup');
 })
 
+router.get('/logout', (req, res) => {
+    req.session.loggedIn = false
+    console.log(req.session)
+    res.render('login')
+    
+})
+
 module.exports = router

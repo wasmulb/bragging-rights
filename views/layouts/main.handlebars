@@ -12,22 +12,31 @@
     <body>
         <div> 
             <header class="container-fluid text-center py-4 custom">
-               
-            <!-- Only display the logout button if the user is logged in -->
-             {{!-- <nav><button class="btn-danger" id="login">login</button></nav>
-            <nav><button class="btn-danger" id="logout">logout</button></nav> --}}
+                <h1>Bragging Rights! </h1>
+               <a href="/login" class="button is-primary">login</a>
+               <a href="/signup" class="button is-primary">signup</a>
+               <a href="/logout" class="button is-primary">logout</a>
+             {{#if loggedIn}}
+            
+            <nav><button class="btn-danger" id="logout">logout</button></nav> 
+            {{/if}}
            </header>
 
            <main>
+            
                 {{{body}}}
+
            </main>
 
            <footer>
 
            </footer>
         </div>
-          <!-- Only include the logout script if the user is logged in -->
-                {{!-- <script src="/js/logout.js"></script> --}}
+         
+          {{#if loggedIn}}
+         <button class="btn-danger" id="logout">logout</button>
+                <script src="/js/logout.js"></script>
+            {{/if}}
            
     </body>
 </html>

@@ -14,4 +14,4 @@
     }
   };
   
-// document.querySelector('#logout').addEventListener('click', logoutHandler);
+document.querySelector('#logout').addEventListener('click', logoutHandler);
