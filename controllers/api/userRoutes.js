@@ -25,7 +25,7 @@ router.post('/', async (req, res)=> {
 
 
 //LOG IN 
-router.post('login', async(req,res)=>{
+router.post('/login', async(req,res)=>{
     try{
         const userData = await User.findOne({
             where:{
@@ -41,15 +41,15 @@ router.post('login', async(req,res)=>{
             return;
         }
 
-        const goodPw = await userData.checkPassword(req.body.password);
+        // const goodPw = await userData.checkPassword(req.body.password);
 
-        if (!goodPw){
-            res
+        // if (!goodPw){
+        //     res
             
-            .status(400)
-            .json({message: 'Please Check Email/Password'});
-            return;
-        }
+        //     .status(400)
+        //     .json({message: 'Please Check Email/Password'});
+        //     return;
+        // }
 
         //once user is logged in set up the logged in session 
         req.session.save(()=> {
