@@ -26,9 +26,6 @@ if (app.get('env') === 'production') {
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
-app.get('/', (req, res) => {
-  res.render('layouts/main.handlebars');
-});
 
 app.use(session(sess))
 

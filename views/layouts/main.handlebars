@@ -9,34 +9,34 @@
         <link type="text/html" href="public\style.css">    
     </head>
 
-    <body>
-        <div> 
-            <header class="container-fluid text-center py-4 custom">
-                <h1>Bragging Rights! </h1>
-               <a href="/login" class="button is-primary">login</a>
-               <a href="/signup" class="button is-primary">signup</a>
-               <a href="/logout" class="button is-primary">logout</a>
-             {{#if loggedIn}}
-            
-            <nav><button class="btn-danger" id="logout">logout</button></nav> 
-            {{/if}}
-           </header>
+  <body>
+  <div> 
+    
+    <header class="container-fluid text-center py-4 custom">
+      
+      
+      {{#if loggedIn}}
+        <a href="/logout" class="button is-primary">logout</a>
+      {{else}}
+        <a href="/login" class="button is-primary">login</a>
+        <a href="/signup" class="button is-primary">signup</a>
+      {{/if}}
+    </header>
 
-           <main>
-            
-                {{{body}}}
+    <main>
 
-           </main>
 
-           <footer>
+      {{{body}}}
 
-           </footer>
-        </div>
-         
-          {{#if loggedIn}}
-         <button class="btn-danger" id="logout">logout</button>
-                <script src="/js/logout.js"></script>
-            {{/if}}
-           
-    </body>
+      
+    </main>
+
+    <footer>
+    </footer>
+  </div>
+  {{#if loggedIn}}
+    <button class="button is-primary" id="logout">logout</button>
+    <script src="/js/logout.js"></script>
+  {{/if}}
+</body>
 </html>
