@@ -26,15 +26,13 @@ if (app.get('env') === 'production') {
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
-app.get('/', (req, res) => {
-  res.render('layouts/main.handlebars');
-});
 
 app.use(session(sess))
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(routes)
 
 sequelize.sync({ force: false }).then(() => {

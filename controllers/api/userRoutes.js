@@ -25,7 +25,7 @@ router.post('/', async (req, res)=> {
 
 
 //LOG IN 
-router.post('login', async(req,res)=>{
+router.post('/login', async(req,res)=>{
     try{
         const userData = await User.findOne({
             where:{
@@ -41,22 +41,16 @@ router.post('login', async(req,res)=>{
             return;
         }
 
-        const goodPw = await userData.checkPassword(req.body.password);
-
-        if (!goodPw){
-            res
-            
-            .status(400)
-            .json({message: 'Please Check Email/Password'});
-            return;
-        }
-
         //once user is logged in set up the logged in session 
         req.session.save(()=> {
             req.session.loggedIn = true;
             res
             .status(200)
-            .json({ user: userData, message: 'Logged In'});
+            .json({ 
+                loggedIn: true,
+                username: userData.username, 
+                message: 'Logged In'
+            });
         });
     } catch(err){
         console.log(err);
@@ -64,16 +58,18 @@ router.post('login', async(req,res)=>{
     }
 });
 
+
 //LOG OUT
-router.post('/logout', (req,res)=> {
-    if(req.sessiono.loggedIn){
-        req.session.destroy(()=>{
-            res.status(204).end();
-        });
-    } else{
-        res.status(404).end();
+router.post('/logout', (req, res) => {
+    if (req.session.loggedIn) {
+      req.session.destroy(() => {
+        res.status(204).end();
+      });
     }
-});
+    else {
+      res.status(404).end();
+    }
+  });
 
 
 module.exports = router

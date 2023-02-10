@@ -1,11 +1,9 @@
 const loginHandler = async (event) =>{
-
-    //cancel event
     event.preventDefault();
 
     // information inputted by user
-    let email= document.querySelector('#login-email').value.trim();
-    let password= docuement.querySelector('#login-password').value.trim();
+    let email= document.querySelector('#email-login').value.trim();
+    let password= document.querySelector('#password-login').value.trim();
 
     //if statment for sending the information to the server
     if (email && password){
@@ -17,7 +15,7 @@ const loginHandler = async (event) =>{
 
           if (response.ok) {
             document.location.replace('/');
-          } else {
+                    } else {
             alert('Failed to log in, please try again!');
           }
 

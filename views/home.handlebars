@@ -1,0 +1,17 @@
+<h1>Bragging Rights! </h1>
+{{!-- 
+{{#each users as |user|}} --}}
+
+    <section class="container-fluid text-center py-4 custom">
+      {{#if loggedIn}}
+        {{> logout}}
+      {{else}}
+        <a href="/login" class="button is-primary">login</a>
+        <a href="/signup" class="button is-primary">signup</a>
+      {{/if}}
+    </section>
+
+
+{{#if loggedIn}}
+    <script src="/js/logout.js"></script>
+{{/if}}
