@@ -1,3 +1,9 @@
+:root {
+  --primary-color: #DA627D
+
+}
+
+
 *,
 *::before,
 *::after {
@@ -11,8 +17,65 @@
     font: inherit;
 }
 
-.container-fluid{
-    display: grid;
-    place-items: center;
-    border: red 1px solid;
+.testColors{
+ color:#450920
+}
+
+
+.signUpForm{
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  background-color: #f8f9fb;
+}
+
+.btn{
+  background-color: var(--primary-color);
+  border: none;
+}
+
+
+.column-heading{
+  flex: 50%;
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+}
+
+
+body{
+  font-family: 'Montserrat', sans-serif;
+  background-color: #f8f9fb;
+  font-weight: 500;
+}
+
+.image-container{
+  position: relative;
+}
+
+.image-right{
+  position: absolute;
+   object-fit: cover;
+}
+
+
+.wrapper {
+  background-color: #010101;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  grid-auto-rows: 200px;
+  grid-template-areas:
+    ". a a ."
+    ". a a .";
+}
+.item1 {
+  grid-area: a;
+  align-self: center;
+  justify-self: center;
 }
