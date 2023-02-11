@@ -1,34 +1,33 @@
 const User = require('./User');
 const Activities = require('./Activities');
 const Partners = require('./Partners');
+const UserPartners = require('./User-Partners');
 const Event = require('./Event');
 
-User.belongsTo(Partners, {
+//all good
+UserPartners.belongsTo(User, {
   foreignKey: 'user_id',
 })
 
-Partners.hasMany(User, {
-    foreignKey: 'partner_id',
+User.hasMany(UserPartners, {
+  foreignKey: 'user-partner_id',
 })
 
-Activities.belongsTo(Partners, {
-  foreignKey: 'activities_id',
+//all goood above
+
+Activities.belongsTo(Event, {
+  foreignKey: 'activities_id'
 })
 
-Partners.hasMany(Activities, {
-    foreignKey: 'partners_id'
+UserPartners.belongsTo(Event, {
+  foreignKey: 'user-partner_id'
 })
 
-Event.belongsTo(Activities, {
-    foreignKey: 'event_id'
-})
 
-Activities.hasMany(Event, {
-    foreignKey: 'activities_id'
-})
 
 module.exports = {
   User,
+  UserPartners,
   Partners,
   Activities,
   Event
