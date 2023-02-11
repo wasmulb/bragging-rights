@@ -11,6 +11,12 @@ router.get('/', (req, res) => {
         
 });
 
+router.get('/scores', (req, res) => {
+    console.log("get scores")
+    res.render('scores', { 
+    }); 
+});
+
 
   router.get('/login', (req,res)=>{
       if(req.session.loggedIn){
