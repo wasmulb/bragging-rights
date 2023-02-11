@@ -5,6 +5,7 @@
     <section class="container-fluid text-center py-4 custom">
       {{#if loggedIn}}
         {{> logout}}
+        <a href="/scores">scores</a>
       {{else}}
         <a href="/login" class="button is-primary">login</a>
         <a href="/signup" class="button is-primary">signup</a>

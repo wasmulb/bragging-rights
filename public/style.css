@@ -1,5 +1,11 @@
 :root {
-  --primary-color: #DA627D
+  --primary-color: #DA627D;
+  --primary-accent-color: #DA627D;
+  --secondary-color: #A53860;
+  --secondary-accent-color: #450920;
+  --light-color: #F9DBBD;
+  --primary-background-color:  #f8f9fb;
+
 
 }
 
@@ -65,7 +71,7 @@ body{
 
 
 .wrapper {
-  background-color: #010101;
+  background-color: var(--primary-background-color);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
@@ -74,8 +80,12 @@ body{
     ". a a ."
     ". a a .";
 }
-.item1 {
+.item1 , #acquisitions {
   grid-area: a;
   align-self: center;
   justify-self: center;
+}
+
+#acquisitions{
+  border: 1px solid red;
 }

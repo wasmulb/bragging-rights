@@ -8,7 +8,13 @@ router.get('/', (req, res) => {
         loggedIn: req.session.loggedIn, 
         username: req.session.username,
     });
-        // console.log(username)
+        
+});
+
+router.get('/scores', (req, res) => {
+    console.log("get scores")
+    res.render('scores', { 
+    }); 
 });
 
 
