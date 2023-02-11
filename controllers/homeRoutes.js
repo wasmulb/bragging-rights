@@ -36,6 +36,11 @@ router.get('/scores', (req, res) => {
       }
       res.render('signup', { loggedIn: req.session.loggedIn });
   });
+
+  router.get('/competitors', (req, res) => {
+    res.render('competitors', { 
+    }); 
+});
   
 
 

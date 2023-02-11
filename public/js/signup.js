@@ -19,7 +19,7 @@ if (username && email && password){
 
     if(response.ok){
         console.log('User Created!!!!');
-        document.location.replace('/');
+        document.location.replace('/competitors');
     }else{
         alert('Failed to sign up, please try again!');
     }

@@ -14,6 +14,26 @@ router.get('/', async (req, res) => {
     }
   });
 
+//Get user_id by searching 
+
+async function findUserByUsername(username) {
+  const user = await User.findOne({
+    where: {
+      username: username
+    }
+  });
+  return user;
+}
+
+router.get('/:username', async (req, res) => {
+  const username = req.params.username;
+  const user = await findUserByUsername(username);
+  if (!user) {
+    return res.status(404).json({ error: `No user found with username: ${username}` });
+  }
+  res.json(user);
+});
+
 //CREATE new user
 router.post('/', async (req, res)=> {
     console.log(req.body)
