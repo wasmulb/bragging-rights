@@ -1,27 +1,28 @@
 const router = require('express').Router();
+const { response } = require('express');
 const { User, UserPartners, Partners, Activities, Event } = require('../../models');
 
-//get activity
 router.get('/', async (req, res) => {
     try {
-        const activityData = await Activities.findAll({
+        const eventData = await Event.findAll({
         });
-        res.status(200).json(activityData);
+        res.status(200).json(eventData);
     } catch (err) {
         res.status(500).json(err)
     }
 });
- 
+
 router.post('/', async (req, res) => {
     try {
-      const newPair = await Activities.create({
-        activity_name: req.body.activity_name,
+      const newEvent = await Event.create({
+        date: req.body.date,
+        winner: req.body.winner,
       })
-      res.status(200).json(newPair)
+      res.status(200).json(newEvent)
     }
     catch (err) {
       res.status(500).json(err);
     };
   });
 
- module.exports = router;
+  module.exports = router;
