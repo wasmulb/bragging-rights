@@ -80,8 +80,12 @@ body{
     ". a a ."
     ". a a .";
 }
-.item1 {
+.item1 , #acquisitions {
   grid-area: a;
   align-self: center;
   justify-self: center;
+}
+
+#acquisitions{
+  border: 1px solid red;
 }
