@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
         loggedIn: req.session.loggedIn, 
         username: req.session.username,
     });
-        // console.log(username)
+        
 });
 
 
