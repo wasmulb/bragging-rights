@@ -1,14 +1,18 @@
-<h1>Bragging Rights! </h1>
+<section>
+
+<h1 class="title"> Bragging Rights </h1>
 {{!-- 
 {{#each users as |user|}} --}}
-
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
     <section class="container-fluid text-center py-4 custom">
       {{#if loggedIn}}
         {{> logout}}
         <a href="/scores">scores</a>
       {{else}}
-        <a href="/login" class="button is-primary">login</a>
-        <a href="/signup" class="button is-primary">signup</a>
+        <a href="/login" class="button">login</a>
+        <a href="/signup" class="button">signup</a>
       {{/if}}
     </section>
 
@@ -16,3 +20,6 @@
 {{#if loggedIn}}
     <script src="/js/logout.js"></script>
 {{/if}}
+
+
+</section>
