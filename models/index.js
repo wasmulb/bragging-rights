@@ -15,6 +15,10 @@ User.hasMany(UserPartners, {
 
 //all goood above
 
+// User.belongsTo(Partners, {
+//   through: 'user-partner_id'
+// })
+
 Activities.belongsTo(Event, {
   foreignKey: 'activities_id'
 })
