@@ -43,6 +43,11 @@ router.get('/scores', (req, res) => {
 });
   
 
+router.get('/event', (req, res) => {
+    res.render('event', { 
+    }); 
+});
+  
 
   router.get('/logout', (req, res) => {
       res.render('login', req.session.loggedIn = false) ;

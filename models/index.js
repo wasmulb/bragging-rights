@@ -4,6 +4,7 @@ const Partners = require('./Partners');
 const UserPartners = require('./User-Partners');
 const Event = require('./Event');
 
+
 //all good
 UserPartners.belongsTo(User, {
   foreignKey: 'user_id',
@@ -24,11 +25,11 @@ UserPartners.belongsTo(Event, {
 })
 
 
-
 module.exports = {
   User,
   UserPartners,
   Partners,
   Activities,
-  Event
+  Event,
+
 };
