@@ -45,8 +45,8 @@ router.get('/:id', async (req,res)=>{
 router.post('/', async (req, res) => {
     console.log(req.body)
     try {
-      const firstUser= req.body.firstUser
-      const secondUser= req.body.secondUser
+      const firstUser= req.body.firstUserID
+      const secondUser= req.body.secondUserID
       const newPair = await Partners.create()
       console.log(newPair)
       const newUserPartner = await UserPartners.bulkCreate([{
