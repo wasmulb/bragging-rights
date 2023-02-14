@@ -61,4 +61,6 @@ const addCompetitor = async (event) => {
   }
 }
 
+
+
 document.querySelector(".new-comp-form").addEventListener('submit', addCompetitor)
