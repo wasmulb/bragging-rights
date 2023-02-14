@@ -40,6 +40,19 @@
   border: none;
 }
 
+.btn:hover {
+  background-color: var(--secondary-color);
+  color: azure;
+}
+
+.btn-signup{
+  margin-top: 10px;
+  font-weight: bold;
+  background-color: var(--primary-color);
+  cursor: pointer;
+  color: azure;
+}
+
 
 .column-heading{
   flex: 50%;
@@ -72,7 +85,8 @@ body{
 
 .wrapper {
   background-color: var(--primary-background-color);
-  display: grid;
+  opacity: .8;
+  display: flex;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
   grid-auto-rows: 200px;
@@ -766,4 +780,30 @@ html {
   to {
       transform: translateY(-2000px);
   }
+}
+
+.login{
+  display: flex;
+  justify-content: center;
+  color: #f8f9fb;
+}
+
+.new-comp-form{
+  display: flex;
+  justify-content: center;
+}
+
+.competitor{
+display: flex;
+flex-wrap: wrap;
+width: 100%;
+text-align: center;
+justify-content: center;
+margin-bottom: 15px;
+padding-top: 20px;
+color:white;
+}
+
+.username{
+  color: var(--primary-accent-color);
 }
