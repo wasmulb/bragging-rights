@@ -1,10 +1,11 @@
 const router = require('express').Router();
 const Sequelize = require('sequelize');
+const {Op} = require('sequelize')
+// const helper = require('../../helper.helpers.js');
 const { response } = require('express');
 const { User, UserPartners, Partners, Activities, Event } = require('../../models');
 
 router.get('/getuserpart', async (req, res) => {
-  console.log('test')
   try {
     const userPartner = await UserPartners.findAll({
       attributes: [
@@ -19,36 +20,34 @@ router.get('/getuserpart', async (req, res) => {
   }
 })
 
-router.get('/', async (req, res) => {
-  try {
-      const partnerData = await Partners.findAll();
-      res.status(200).json(partnerData);
-  } catch (err) {
-      res.status(500).json(err)
-  }
-});
+// router.get('/', async (req, res) => {
+//   try {
+//       const partnerData = await Partners.findAll();
+//       res.status(200).json(partnerData);
+//   } catch (err) {
+//       res.status(500).json(err)
+//   }
+// });
 
-router.get('/:id', async (req,res)=>{
-    try{
-        const partnerData = await Partners.findByPk(req.params.id, {
-            include: [{ model: User }]
-        });
-        res.status(200).json(partnerData);
-    } catch(err){
-        console.log(err);
-        res.status(500).json(err);
-    }
-});
+// router.get('/:id', async (req,res)=>{
+//     try{
+//         const partnerData = await Partners.findByPk(req.params.id, {
+//             include: [{ model: User }]
+//         });
+//         res.status(200).json(partnerData);
+//     } catch(err){
+//         console.log(err);
+//         res.status(500).json(err);
+//     }
+// });
 
 
 
 router.post('/', async (req, res) => {
-    console.log(req.body)
     try {
-      const firstUser= req.body.firstUser
-      const secondUser= req.body.secondUser
+      const firstUser= req.body.firstUserID
+      const secondUser= req.body.secondUserID
       const newPair = await Partners.create()
-      console.log(newPair)
       const newUserPartner = await UserPartners.bulkCreate([{
         user_id: firstUser,
         partners_id: newPair.dataValues.id
@@ -64,5 +63,69 @@ router.post('/', async (req, res) => {
       res.status(500).json(err);
     };
   });
+
+// moved to helper.js
+  async function findPartnersByUserID(userID) {
+    const userPartners = await UserPartners.findAll({
+      where: {
+        user_id: userID
+      },
+    });
+    return userPartners;
+  }
+
+  // Moved to helper.js
+  async function findUsersByPartnerID(partnerID, userID) {
+    let partnerData = await UserPartners.findAll({
+      where: {
+        partners_id: partnerID,
+      },
+    });
+    partnerData = partnerData.filter(partner => partner.dataValues.user_id != userID)
+    let result = []
+    for (let i = 0; i<partnerData.length; i++){
+      result.push(await findUserByUserID(partnerData[i].dataValues.user_id))
+    }
+    return result;
+  }
+
+  //Moved to helpler.js
+  async function findUserByUserID(userid) {
+    const user = await User.findOne({
+      where: {
+        id: userid
+      },
+    });
+    return user;
+  }
+
+  // Get  partnerships by username
+  router.get('/test/:username', async (req, res) => {
+    try {
+      const userData = await User.findOne({
+        where: {
+          username: req.params.username
+        }
+      })
+      const partners = await findPartnersByUserID(userData.id)
+      const partnerships = []
+      for (let i = 0; i<partners.length; i++){
+        partnerships.push(await findUsersByPartnerID(partners[i].partners_id, userData.id))
+      }
+      
+      res.status(200).json({userData, partners, partnerships})
+    } catch (err){
+      res.status(500).json(err);
+    }
+});
+
+router.get('/', async (req, res) => {
+  try {
+      const partnerData = await Partners.findAll();
+      res.status(200).json(partnerData);
+  } catch (err) {
+      res.status(500).json(err)
+  }
+});
 
 module.exports = router

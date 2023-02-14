@@ -4,6 +4,7 @@ const Partners = require('./Partners');
 const UserPartners = require('./User-Partners');
 const Event = require('./Event');
 
+
 //all good
 UserPartners.belongsTo(User, {
   foreignKey: 'user_id',
@@ -15,6 +16,10 @@ User.hasMany(UserPartners, {
 
 //all goood above
 
+// User.belongsTo(Partners, {
+//   through: 'user-partner_id'
+// })
+
 Activities.belongsTo(Event, {
   foreignKey: 'activities_id'
 })
@@ -24,11 +29,11 @@ UserPartners.belongsTo(Event, {
 })
 
 
-
 module.exports = {
   User,
   UserPartners,
   Partners,
   Activities,
-  Event
+  Event,
+
 };
