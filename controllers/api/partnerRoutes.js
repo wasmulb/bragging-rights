@@ -1,11 +1,11 @@
 const router = require('express').Router();
 const Sequelize = require('sequelize');
 const {Op} = require('sequelize')
+// const helper = require('../../helper.helpers.js');
 const { response } = require('express');
 const { User, UserPartners, Partners, Activities, Event } = require('../../models');
 
 router.get('/getuserpart', async (req, res) => {
-  console.log('test')
   try {
     const userPartner = await UserPartners.findAll({
       attributes: [
@@ -44,12 +44,10 @@ router.get('/getuserpart', async (req, res) => {
 
 
 router.post('/', async (req, res) => {
-    console.log(req.body)
     try {
       const firstUser= req.body.firstUserID
       const secondUser= req.body.secondUserID
       const newPair = await Partners.create()
-      console.log(newPair)
       const newUserPartner = await UserPartners.bulkCreate([{
         user_id: firstUser,
         partners_id: newPair.dataValues.id
@@ -66,27 +64,24 @@ router.post('/', async (req, res) => {
     };
   });
 
+// moved to helper.js
   async function findPartnersByUserID(userID) {
     const userPartners = await UserPartners.findAll({
       where: {
         user_id: userID
       },
-      // include: [{ model: UserPartners}],
     });
     return userPartners;
   }
 
+  // Moved to helper.js
   async function findUsersByPartnerID(partnerID, userID) {
-    console.log(partnerID)
     let partnerData = await UserPartners.findAll({
       where: {
         partners_id: partnerID,
       },
-      // include: [{ model: UserPartners}],
     });
-    console.log(partnerData)
     partnerData = partnerData.filter(partner => partner.dataValues.user_id != userID)
-    // partnerData = partnerData.map(async (user) => await findUserByUserID(user.dataValues.user_id))
     let result = []
     for (let i = 0; i<partnerData.length; i++){
       result.push(await findUserByUserID(partnerData[i].dataValues.user_id))
@@ -94,27 +89,24 @@ router.post('/', async (req, res) => {
     return result;
   }
 
+  //Moved to helpler.js
   async function findUserByUserID(userid) {
-    console.log(userid)
     const user = await User.findOne({
       where: {
         id: userid
       },
     });
-    console.log(user)
     return user;
   }
 
-  // Get all partnerships
+  // Get  partnerships by username
   router.get('/test/:username', async (req, res) => {
-    // try {
-      console.log(req.params)
+    try {
       const userData = await User.findOne({
         where: {
           username: req.params.username
         }
       })
-      console.log(userData)
       const partners = await findPartnersByUserID(userData.id)
       const partnerships = []
       for (let i = 0; i<partners.length; i++){
@@ -122,9 +114,9 @@ router.post('/', async (req, res) => {
       }
       
       res.status(200).json({userData, partners, partnerships})
-    // } catch (err){
-    //   res.status(500).json(err);
-    // }
+    } catch (err){
+      res.status(500).json(err);
+    }
 });
 
 router.get('/', async (req, res) => {
