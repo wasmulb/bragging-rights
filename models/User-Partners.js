@@ -1,4 +1,4 @@
-const { Model, DataTypes} = require('sequelize');
+const { Model, DataTypes, STRING} = require('sequelize');
 const sequelize = require('../config/connection');
 
 class UserPartners extends Model {}
@@ -14,6 +14,10 @@ UserPartners.init(
     partners_id: {
       type: DataTypes.INTEGER,
     }
+    // activity:{
+    //   type: DataTypes.STRING,
+    //   winner: DataTypes.STRING,
+    // }
   },
   {
     sequelize,
