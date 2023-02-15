@@ -3,8 +3,8 @@ var compSection = document.getElementsByClassName('comp-section')
 
 var userID = 1
 
-function viewCompetitors(){
-    fetch('/api/partners/test')
+function viewCompetitors(username){
+    fetch(`/api/partners/test/${username}`)
     .then(function(response) {
       return response.json()
     })
