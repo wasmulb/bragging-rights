@@ -24,20 +24,24 @@
 }
 
 .testColors{
- color:#450920
+ color: white;
 }
 
 
 .signUpForm{
+  position: relative;
+  justify-content: center;
+  background: transparent;
   display: grid;
   justify-content: center;
   align-content: center;
-  background-color: #f8f9fb;
+  color: white;
 }
 
 .btn{
   background-color: var(--primary-color);
   border: none;
+  margin-top: 10px;
 }
 
 .btn:hover {
@@ -84,7 +88,8 @@ body{
 
 
 .wrapper {
-  background-color: var(--primary-background-color);
+  font-size: 25px;
+  justify-content: center;
   opacity: .8;
   display: flex;
   grid-template-columns: repeat(4, 1fr);
