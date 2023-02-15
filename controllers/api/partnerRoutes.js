@@ -44,7 +44,7 @@ router.get('/getuserpart', async (req, res) => {
 
 
 router.post('/', async (req, res) => {
-  console.log(req.session.userId)
+  console.log("req session user id", req.session.userId)
     try {
       const firstUser= req.body.firstUserID
       const secondUser= req.body.secondUserID
@@ -102,7 +102,8 @@ router.post('/', async (req, res) => {
 
   // Get  partnerships by username
   router.get('/test', async (req, res) => {
-    console.log(req.session)
+    console.log("req session log",req.session)
+    console.log("signed in user", req.session.username)
     try {
       const userData = await User.findOne({
         where: {
