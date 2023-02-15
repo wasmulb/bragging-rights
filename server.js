@@ -15,7 +15,10 @@ const app = express();
 
 var sess = {
   secret: 'keyboard cat',
-  cookie: {}
+  cookie: {},
+  resave: true,
+  saveUninitialized: true
+
 }
 
 if (app.get('env') === 'production') {
