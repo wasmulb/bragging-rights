@@ -1,13 +1,11 @@
-const axios = require('axios');
-
 //For displaying the logged in users competitors
 var compSection = document.getElementsByClassName('comp-section')
 
 var userID = 1
-
+let username;
 function viewCompetitors(username){
-  console.log("is is this?", username)
-    axios.get(`/api/partners/test/?username=${username}`)
+  console.log(username)
+    fetch("/api/partners/test/")
     .then(function(response) {
       return response.json()
     })

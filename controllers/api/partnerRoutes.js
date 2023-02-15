@@ -101,7 +101,7 @@ router.post('/', async (req, res) => {
   }
 
   // Get  partnerships by username
-  router.get('/test', async (req, res) => {
+  router.get('/test/:username', async (req, res) => {
     console.log("req session log",req.session)
     console.log("signed in user", req.session.username)
     try {

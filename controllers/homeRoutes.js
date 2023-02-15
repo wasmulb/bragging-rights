@@ -47,10 +47,12 @@ router.get('/scores', (req, res) => {
 
   router.get('/competitors', (req, res) => {
     console.log(req.session)
+    console.log("comp user name", req.session.username)
     res.render('competitors', { 
         
         loggedIn: req.session.loggedIn, 
         username: req.session.username,
+      
     }); 
 });
   
