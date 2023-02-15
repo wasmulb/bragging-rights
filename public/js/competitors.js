@@ -4,7 +4,7 @@ var compSection = document.getElementsByClassName('comp-section')
 var userID = 1
 
 function viewCompetitors(){
-    fetch('/api/partners')
+    fetch('/api/partners/test')
     .then(function(response) {
       return response.json()
     })
@@ -14,7 +14,8 @@ function viewCompetitors(){
         for(var i= 0; i<data.length; i++){
             var compTag = document.createElement('a')
             compTag.classList.add("comp-tag")
-            compTag.innerText = data.partners;
+            console.log(data.user.dataValues.partnership[i].username)
+            compTag.innerText = data.user.dataValues.partnership[i].username;
 
             compSection.appendChild(compTag)
         };
@@ -64,3 +65,4 @@ const addCompetitor = async (event) => {
 
 
 document.querySelector(".new-comp-form").addEventListener('submit', addCompetitor)
+viewCompetitors()

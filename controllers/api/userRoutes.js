@@ -67,6 +67,8 @@ router.post('/', async (req, res)=> {
         //once created create session for user
         req.session.save(()=>{
             req.session.loggedIn = true;
+            req.session.username =req.body.username
+            
             res.status(200).json(userData);
         });  
          //if user is already created send an error     
@@ -82,6 +84,7 @@ router.post('/login', async(req,res)=>{
         const userData = await User.findOne({
             where:{
                 email: req.body.email,
+               
             },
         });
 
@@ -95,6 +98,8 @@ router.post('/login', async(req,res)=>{
 
         //once user is logged in set up the logged in session 
         req.session.save(()=> {
+          console.log(userData)
+          req.session.username = userData.username
             req.session.loggedIn = true;
             res
             .status(200)

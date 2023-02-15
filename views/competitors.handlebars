@@ -1,62 +1,42 @@
-{{!-- <div class="wrapper">  
-<div class="comp-main-wrapper">
-  <h1>Add a Competitor</h1>
-<form class="new-comp-form">
-  <label for="username">Username 1:</label>
-  <input type="text" id="first-username" name="username">
-  <label for="username">Username 2:</label>
-  <input type="text" id="second-username" name="username">
-  <input type="submit" value="Submit">
-</form>
-<script src="js/competitors.js"></script>
-
-<div class="comp-set-wrapper">
-  <h1>Your competitors</h1>
-  <section class="comp-section"></section>
-  <ul class="comps">
-    <li class="comp1"></li>
-    <li class="comp2"></li>
-  </ul>
-</div>
-</div>
-</div> --}}
-
 <div class="grid-container">
 <form class="new-comp-form"> 
 <div class="grid-item item-1">
-
-     <label for="username"></label>
-     <input type="text" id="first-username" name="username" placeholder="Enter Name">
-     {{!-- <label for="username">Username 1:</label> --}}
-    <p class="player">Player One</p>
+    
+   <input type="text" id="first-username" name="username" placeholder="Enter Name">
+   {{#if loggedIn}}
+    <h1 class="main-user">{{username}}</h1>
+    {{id}}
+    {{/if}}
   </div>
 
 
 <div class="grid-item item-2">
   
-    <button class="new-comp-form">Compete With</button>
+    <button class="new-comp-form" id="event-Add">Add Opponent</button>
 </div>
 
 <div class="grid-item item-3">
     <label for="username"></label>
     <input type="text" id="second-username" name="username" placeholder="Enter Name">
-     {{!-- <label for="username">Username 2:</label> --}}
     <p class="player">Player Two</p>
     
   </div>
 
 <div class="grid-item item-4">
-    <label for="partnerships"></label>
+<div class="compSection">
     <h1 class="partnerships">Your Competitors</h1>
-    <ul class="partnerships-list">
-      <li class="partnership-names">
-      {{firstUserID}}
-      </li>
-       <li class="partnership-names">
-        {{secondUserID}}
-      </li>
 
+    <ul>
+     
+      <li class="comp-tag">
+
+      </li>
+        
+       <li class="partnership-names">
+      
+      </li>
     </ul>
+
   </div>
 </div>
 </form>

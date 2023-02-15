@@ -146,3 +146,12 @@ body{
 li{
   list-style: none;
 }
+
+.main-user{
+  color:var(--light-color)
+}
+
+#event-Add{
+  font-size: 30px;
+
+}
