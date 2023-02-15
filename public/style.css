@@ -99,7 +99,7 @@ body{
     ". a a ."
     ". a a .";
 }
-.item1 , #acquisitions {
+.item1{
   grid-area: a;
   align-self: center;
   justify-self: center;
@@ -108,6 +108,7 @@ body{
 #acquisitions{
   border: 1px solid red;
 }
+
 
 .title{
 display: flex;
@@ -341,3 +342,56 @@ color:white;
 .username{
   color: var(--primary-accent-color);
 }
+.score-center{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.comps{
+  display:inline-flex
+}
+
+.player{
+  color:var(--light-color);
+  font-size: 50px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  height: 100vh;
+}
+
+.grid-item {
+  padding: 20px;
+  border: 1px solid black;
+  text-align: center;
+  grid-row:1
+}
+
+.item-1 {
+  grid-row: 1 / 2;
+  background-color: var(--secondary-accent-color) ;
+}
+
+.item-2 {
+  grid-row: 2 / 3;
+  background-color: var(--light-color);
+}
+
+.item-3 {
+  grid-row: 3 / 4;
+  background-color: var(--secondary-color);
+}
+
+.new-comp-form button{
+  border: none;
+  background-color: transparent;
+  font-size: 100px;
+}
+

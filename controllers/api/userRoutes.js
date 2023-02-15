@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { response } = require('express');
+// const helper = require('../../helper/helpers');
 const { User, UserPartners, Partners, Activities, Event } = require('../../models');
 
 //Get all users
@@ -14,13 +15,14 @@ router.get('/', async (req, res) => {
     }
   });
 
-//Get user_id by searching 
-
+//Get user by searching a username
+//moved to helper.js
 async function findUserByUsername(username) {
   const user = await User.findOne({
     where: {
       username: username
-    }
+    },
+    include: [{ model: UserPartners}],
   });
   return user;
 }
@@ -34,9 +36,28 @@ router.get('/:username', async (req, res) => {
   res.json(user);
 });
 
+//I don't think we need this? duplicate?
+async function findPartnersByUserID(userID) {
+  const userPartners = await UserPartners.findAll({
+    where: {
+      user_id: userID
+    },
+  });
+  return userPartners;
+}
+
+router.get('/:username', async (req, res) => {
+  const username = req.params.username;
+  const user = await findUserByUsername(username);
+  if (!user) {
+    return res.status(404).json({ error: `No user found with username: ${username}` });
+  }
+  res.json(user);
+});
+
+
 //CREATE new user
 router.post('/', async (req, res)=> {
-    console.log(req.body)
     try{const userData = await User.create({
             
             username: req.body.username,
@@ -50,7 +71,6 @@ router.post('/', async (req, res)=> {
         });  
          //if user is already created send an error     
     } catch (err){
-        console.log(err);
         res.status(500).json(err);
     }
 });
@@ -85,7 +105,6 @@ router.post('/login', async(req,res)=>{
             });
         });
     } catch(err){
-        console.log(err);
         res.status(500).json(err);
     }
 });

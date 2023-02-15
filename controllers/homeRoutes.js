@@ -43,10 +43,14 @@ router.get('/scores', (req, res) => {
 });
   
 
+router.get('/event', (req, res) => {
+    res.render('event', { 
+    }); 
+});
+  
 
   router.get('/logout', (req, res) => {
-      req.session.loggedIn = false;
-      res.render('login', { loggedIn: req.session.loggedIn });
+      res.render('login', req.session.loggedIn = false) ;
   });
 
   module.exports =router
