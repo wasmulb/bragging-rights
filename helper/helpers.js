@@ -1,3 +1,5 @@
+const { User, UserPartners, Partners, Activities, Event } = require('../models');
+
 async function findUserByUserID(userid) {
     console.log(userid)
     const user = await User.findOne({
@@ -15,11 +17,9 @@ async function findUserByUserID(userid) {
       where: {
         partners_id: partnerID,
       },
-      // include: [{ model: UserPartners}],
     });
     console.log(partnerData)
     partnerData = partnerData.filter(partner => partner.dataValues.user_id != userID)
-    // partnerData = partnerData.map(async (user) => await findUserByUserID(user.dataValues.user_id))
     let result = []
     for (let i = 0; i<partnerData.length; i++){
       result.push(await findUserByUserID(partnerData[i].dataValues.user_id))

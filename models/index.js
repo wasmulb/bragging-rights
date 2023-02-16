@@ -20,6 +20,16 @@ User.hasMany(UserPartners, {
 //   through: 'user-partner_id'
 // })
 
+//New associations for acivities/partners
+Activities.belongsTo(Partners, {
+  foreignKey: 'partners_id'
+})
+
+Partners.hasMany(Activities, {
+  foreignKey: 'activities_id'
+})
+
+//idk...
 Activities.belongsTo(Event, {
   foreignKey: 'activities_id'
 })

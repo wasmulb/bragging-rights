@@ -1,4 +1,5 @@
 (async function() {
+  // console.log( document.getElementById('acquisitions'))
   new Chart(
     document.getElementById('acquisitions'),
     {
