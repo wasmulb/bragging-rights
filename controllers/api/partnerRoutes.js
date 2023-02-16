@@ -89,9 +89,29 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
   try {
-      const partnerData = await Partners.findAll();
-      res.status(200).json(partnerData);
+      let partnerData = await Activities.findAll({
+       include: [{model: Partners}]
+      
+      });
+      let partnerList = partnerData.map(partner => partner.dataValues.partners_id)
+      partnerList = [...new Set(partnerList)];
+      const dict = {}
+      console.log(partnerList)
+      for (let i = 0; i < partnerList.length; i++){
+        for (let j = 0; j<partnerData.length; j++){
+          console.log(partnerList[i], partnerData[j].dataValues.partners_id)
+          if(partnerList[i] in dict && partnerList[i] == partnerData[j].dataValues.partners_id){
+            dict[partnerList[i]].activities.push(partnerData[j].dataValues)
+          } else if (partnerList[i] == partnerData[j].dataValues.partners_id){
+            dict[partnerList[i]] = {activities: [partnerData[j].dataValues]}
+          }
+        }
+      }
+      console.log(dict)
+      partnerData.partnerActivities = dict
+      res.status(200).json({dict});
   } catch (err) {
+    console.log(err)
       res.status(500).json(err)
   }
 });

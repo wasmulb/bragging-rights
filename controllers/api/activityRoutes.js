@@ -36,13 +36,13 @@ router.post('/', async (req, res) => {
     };
   });
 
-  router.get('/:partnerid', async (req, res) => {
-    const partnerData = await Partners.findOne({
-      where: {
-        id: partnersid
-      }
-    })
-  })
+  // router.get('/:partnerid', async (req, res) => {
+  //   const partnerData = await Partners.findOne({
+  //     where: {
+  //       id: partnersid
+  //     }
+  //   })
+  // })
 
   //Get partner pair by userIDs
 // async function findPartnershipbyUserIDs (userIDs){
