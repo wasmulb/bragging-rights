@@ -46,6 +46,7 @@ router.get('/getuserpart', async (req, res) => {
 
 
 router.post('/', async (req, res) => {
+  console.log("req session user id", req.session.userId)
     try {
       const firstUser= req.body.firstUserID
       const secondUser= req.body.secondUserID
@@ -67,17 +68,20 @@ router.post('/', async (req, res) => {
   });
 
   // Get  partnerships by username
-  router.get('/test/:username', async (req, res) => {
+  router.get('/test', async (req, res) => {
+    console.log("req session log",req.session)
+    console.log("signed in user", req.session.username)
     try {
-      const userData = await User.findOne({
-        where: {
-          username: req.params.username
-        }
-      })
-      const partners = await findPartnersByUserID(userData.id)
+      const userID = req.session.userId
+      const userData = await User.findByPk(userID)
+      if(!userData){
+        return res.status(401).send()
+      }
+      const partners = await findPartnersByUserID(userID)
       const partnerships = []
       for (let i = 0; i<partners.length; i++){
-        partnerships.push(await findUsersByPartnerID(partners[i].partners_id, userData.id))
+       const findPartners= await findUsersByPartnerID(partners[i].partners_id, userID)
+        partnerships.push(findPartners)
       }
       
       res.status(200).json({userData, partners, partnerships})

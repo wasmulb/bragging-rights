@@ -363,7 +363,7 @@ color:white;
 .grid-container {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
   height: 100vh;
 }
 
@@ -395,3 +395,15 @@ color:white;
   font-size: 100px;
 }
 
+li{
+  list-style: none;
+}
+
+.main-user{
+  color:var(--light-color)
+}
+
+#event-Add{
+  font-size: 30px;
+
+}
