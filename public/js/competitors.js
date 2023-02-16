@@ -1,9 +1,9 @@
 //For displaying the logged in users competitors
-var compSection = document.getElementsByClassName('comp-section')
+var compSection = document.getElementById('#comp-section')
 
 var userID = 1
 let username;
-function viewCompetitors(username){
+function viewCompetitors(){
 
     fetch("/api/partners/test")
     .then(function(response) {
@@ -15,17 +15,23 @@ function viewCompetitors(username){
         console.log("get partners here")
         console.log(data)
         console.log(data.partnerships[0][0].username)
+        // const user1 =data.partnerships[0][0].username
+        // // console.log(user1)
         console.log(data.partnerships[1][0].username)
       //create for loop to append to page
-        for(var i= 0; i<data.length; i++){
+
+        for(var i= 0; i<data.partnerships.length; i++){
             var compTag = document.createElement('a')
             compTag.classList.add("comp-tag")
             //after user clicks on competitors send them to next screen
-            compTag.innerText = data.user.dataValues.partnership[i].username;
-
+            compTag.innerText = data.partnerships[i][0].username;
+            let compSection = document.getElementById('comp-section')
             compSection.appendChild(compTag)
         };
-})}
+    })
+    .catch(function (error) {
+      console.log("Error: " + error);
+})};
 
 
 
