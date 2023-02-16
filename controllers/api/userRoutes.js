@@ -102,12 +102,13 @@ router.post('/login', async(req,res)=>{
           console.log("logging user data",userData)
           req.session.username = userData.username
             req.session.loggedIn = true;
+            req.session.userId = userData.id
             res
             .status(200)
             .json({ 
                 loggedIn: true,
                 username: userData.username, 
-                message: 'Logged In'
+                message: 'Logged In',
             });
         });
     } catch(err){

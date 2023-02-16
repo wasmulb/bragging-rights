@@ -4,8 +4,8 @@ var compSection = document.getElementsByClassName('comp-section')
 var userID = 1
 let username;
 function viewCompetitors(username){
-  console.log(username)
-    fetch("/api/partners/test/")
+
+    fetch("/api/partners/test")
     .then(function(response) {
       return response.json()
     })

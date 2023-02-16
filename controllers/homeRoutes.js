@@ -19,25 +19,17 @@ router.get('/scores', (req, res) => {
     }); 
 });
 
-
-  router.get('/login', (req,res)=>{
+router.get('/login', async (req,res)=>{
     console.log(req.session)
       if(req.session.loggedIn){
           res.redirect('/');
           return;
       }
-      req.session.save(()=>{
-        req.session.cookie
-        req.session.loggedIn = true;
-        req.session.userId = 7;
         res.render('login', { loggedIn: req.session.loggedIn });
       })
-     
-  });
   
-
-  
-  router.get('/signup', (req,res)=>{
+ 
+router.get('/signup', (req,res)=>{
       if(req.session.loggedIn){
           res.redirect('/');
           return;
@@ -45,14 +37,15 @@ router.get('/scores', (req, res) => {
       res.render('signup');
   });
 
-  router.get('/competitors', (req, res) => {
+router.get('/competitors', async(req, res) => {
     console.log(req.session)
     console.log("comp user name", req.session.username)
+    // console.log("USER: ", username)
     res.render('competitors', { 
-        
-        loggedIn: req.session.loggedIn, 
+        // username,
+        loggedIn: req.session.loggedIn,
         username: req.session.username,
-      
+
     }); 
 });
   
@@ -63,8 +56,8 @@ router.get('/event', (req, res) => {
 });
   
 
-  router.get('/logout', (req, res) => {
+router.get('/logout', (req, res) => {
       res.render('login', req.session.loggedIn) ;
   });
 
-  module.exports =router
+module.exports =router
