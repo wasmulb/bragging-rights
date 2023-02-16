@@ -9,7 +9,6 @@
 
 }
 
-
 *,
 *::before,
 *::after {
@@ -38,13 +37,14 @@
   color: white;
 }
 .form{
-  display: flex;
+  display: inline-block;
   width: 100%;
   text-align: center;
   justify-content: center;
+  color: #fff;
 }
 .btn{
-  background-color: white;
+  background-color: var(--primary-accent-color);
   border: none;
   margin-top: 10px;
   
@@ -64,7 +64,7 @@
 }
 
 .username{
-  color: black;
+  color: white;
   font-size: 20px;
 }
 .column-heading{
@@ -82,30 +82,8 @@
 
 body{
   font-family: 'Montserrat', sans-serif;
-  background-color: var(--secondary-accent-color);
+  background-color: black;
   font-weight: 500;
-  background: linear-gradient(359deg, #3f2946, #2c2643, #556fb5, #4f3b70);
-    background-size: 800% 800%;
-  -webkit-animation: body 18s ease infinite;
-  -moz-animation: body 18s ease infinite;
-  animation: body 18s ease infinite;
-}
-
-
-@-webkit-keyframes body {
-  0%{background-position:50% 0%}
-  50%{background-position:50% 100%}
-  100%{background-position:50% 0%}
-}
-@-moz-keyframes body {
-  0%{background-position:50% 0%}
-  50%{background-position:50% 100%}
-  100%{background-position:50% 0%}
-}
-@keyframes body {
-  0%{background-position:50% 0%}
-  50%{background-position:50% 100%}
-  100%{background-position:50% 0%}
 }
 
 .image-container{
@@ -212,7 +190,7 @@ animation: title 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
   text-decoration: none;
 }
 .button:hover {
-  color: #450920;
+  color: #91043a;
 }
 
 html {
@@ -340,6 +318,7 @@ html {
 .new-comp-form{
   display: flex;
   justify-content: center;
+ 
   
 }
 
@@ -353,6 +332,7 @@ margin-bottom: 15px;
 padding-top: 20px;
 color:white;
 }
+
 
 
 .score-center{
