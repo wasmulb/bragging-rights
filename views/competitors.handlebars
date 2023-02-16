@@ -1,7 +1,7 @@
-
 <div class="grid-container">
 <form class="new-comp-form"> 
 <div class="grid-item item-1">
+  
     
    <input type="text" id="first-username" name="username" placeholder="Enter Name">
    {{#if loggedIn}}
@@ -24,17 +24,42 @@
   </div>
 
 <div class="grid-item item-4">
-<div>
-  <a href="/event"> <h1 class="partnerships">Set Activities</h1></a>
+  
+  
+
+ <h1 class="partnerships">competitors</h1>
 
     <ul id="compSection"></ul>
-    <script>
-      
-    </script>
+
+
+
+   
+<div class="event-form"  style="display:none;"  id="event-form">
+  <h1>Set Event</h1>
+<form class="event-form">
+  <input type = "text" id="event-label" placeholder="Insert Activity"> 
+  <div>
+    <input type="text" id="first-username" placeholder="User1"/>
+    <input type="text" id="first-score" placeholder="Insert Score"> 
+  </div>
+<div>
+  <input type="text" id="second-username" name="username" placeholder="User2">
+  <input type="text" id="second-score" placeholder="Insert Score">
+</div>
+  <input type="submit" value="Submit">
   </div>
 </div>
+
 </form>
+
+<div> <button id="logout" class="btn" type="submit">logout</button></div>
+
+
+<div id="act-section"></id>
 </div>
+
+
+
 
 
 <script src="js/competitors.js" defer></script>

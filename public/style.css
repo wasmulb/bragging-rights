@@ -13,6 +13,7 @@
 *,
 *::before,
 *::after {
+  color: #fff;
   box-sizing: border-box;
 }
 
@@ -377,6 +378,7 @@ color:white;
 .item-1 {
   grid-row: 1 / 2;
   background-color: var(--secondary-accent-color) ;
+  place-items: center;
 }
 
 .item-2 {
@@ -405,5 +407,19 @@ li{
 
 #event-Add{
   font-size: 30px;
+  color: var(--secondary-accent-color);
+  padding-top: 20px;
 
+}
+
+.comp-tag{
+  font-size: 30px !important;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+#act-section{
+  color: var(--light-color);
+  border: 1px solid red
 }
