@@ -1,6 +1,4 @@
-(async function() {
-  // console.log( document.getElementById('acquisitions'))
-  new Chart(
+new Chart(
     document.getElementById('acquisitions'),
     {
       type: 'radar',
@@ -9,7 +7,7 @@
         datasets: [
           {
             label: "Levi",
-            backgroundColor: "rgba(179,181,198,0.2)",
+            backgroundColor: "fff",
             borderColor: "rgba(179,181,198,1)",
             pointBackgroundColor: "rgba(179,181,198,1)",
             pointBorderColor: "#fff",
@@ -19,7 +17,7 @@
           },
           {
             label: "Jagpreet",
-            backgroundColor: "rgba(255,99,132,0.2)",
+            backgroundColor: "fff",
             borderColor: "rgba(255,99,132,1)",
             pointBackgroundColor: "rgba(255,99,132,1)",
             pointBorderColor: "#fff",
@@ -31,4 +29,4 @@
       }
     }
   );
-})();
+;

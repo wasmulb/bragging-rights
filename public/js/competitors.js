@@ -23,16 +23,16 @@ function viewCompetitors(){
         for(var i= 0; i<data.partnerships.length; i++){
             var compTag = document.createElement('a')
             compTag.classList.add("comp-tag")
+            compTag.setAttribute("href", "/event")
             //after user clicks on competitors send them to next screen
-            compTag.innerText = data.partnerships[i][0].username;
-            let compSection = document.getElementById('comp-section')
+            compTag.innerText = (" ")+ data.partnerships[i][0].username;
+            let compSection = document.getElementById('compSection')
             compSection.appendChild(compTag)
         };
     })
     .catch(function (error) {
       console.log("Error: " + error);
 })};
-
 
 
 const addCompetitor = async (event) => {
@@ -73,6 +73,37 @@ const addCompetitor = async (event) => {
     alert('Failed to create partnership')
   }
 }
+
+
+const partners_id=2
+var actSection = document.getElementById('act-section')
+function viewActivities(){
+    fetch("/api/partners")
+    .then(function(response){
+        return response.json()
+    })
+    .then(function (data){
+        console.log("activity data")
+        console.log(data.dict[partners_id].activities)
+        let partnersActivities = data.dict[partners_id].activities
+        for(i = 0; i < partnersActivities.length; i++){
+            var activityName = document.createElement('h1')
+            var activityDate = document.createElement('h2')
+            var firstUserScore = document.createElement('h2')
+            var secondUserScore = document.createElement('h2')
+            activityName.innerText = "Game/Match: " + partnersActivities[i].activity_name
+            activityDate.innerText = "Date: " + partnersActivities[i].date
+            firstUserScore.innerText = "User One Score: "+ partnersActivities[i].userOne_score
+            secondUserScore.innerText = "User Two Score: "+ partnersActivities[i].userTwo_score
+            actSection.appendChild(activityName)
+            actSection.appendChild(activityDate)
+            actSection.appendChild(firstUserScore)
+            actSection.appendChild(secondUserScore)
+        }
+    })
+}
+viewActivities();
+
 
 
 
