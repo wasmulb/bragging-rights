@@ -37,15 +37,21 @@
   align-content: center;
   color: white;
 }
-
+.form{
+  display: flex;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+}
 .btn{
-  background-color: var(--primary-color);
+  background-color: white;
   border: none;
   margin-top: 10px;
+  
 }
 
 .btn:hover {
-  background-color: var(--secondary-color);
+  background-color: black;
   color: azure;
 }
 
@@ -57,7 +63,10 @@
   color: azure;
 }
 
-
+.username{
+  color: black;
+  font-size: 20px;
+}
 .column-heading{
   flex: 50%;
 }
@@ -73,8 +82,30 @@
 
 body{
   font-family: 'Montserrat', sans-serif;
-  background-color: #000001;
+  background-color: var(--secondary-accent-color);
   font-weight: 500;
+  background: linear-gradient(359deg, #3f2946, #2c2643, #556fb5, #4f3b70);
+    background-size: 800% 800%;
+  -webkit-animation: body 18s ease infinite;
+  -moz-animation: body 18s ease infinite;
+  animation: body 18s ease infinite;
+}
+
+
+@-webkit-keyframes body {
+  0%{background-position:50% 0%}
+  50%{background-position:50% 100%}
+  100%{background-position:50% 0%}
+}
+@-moz-keyframes body {
+  0%{background-position:50% 0%}
+  50%{background-position:50% 100%}
+  100%{background-position:50% 0%}
+}
+@keyframes body {
+  0%{background-position:50% 0%}
+  50%{background-position:50% 100%}
+  100%{background-position:50% 0%}
 }
 
 .image-container{
@@ -124,7 +155,14 @@ font-size: 100px;
 animation: title 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
   
 }
-
+.title2{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  color:white;
+}
 @-webkit-keyframes title {
   0% {
     letter-spacing: -0.5em;
@@ -138,7 +176,7 @@ animation: title 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
   }
 }
 
-@keyframes title {
+@keyframes title  {
   0% {
     letter-spacing: -0.5em;
     opacity: 0;
@@ -151,41 +189,23 @@ animation: title 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
   }
 }
 
-.custom{
-  color: #450920;
-  font-size: 20px;
-  -webkit-animation: custom 0.6s ease-out both;
-  animation: custom 0.6s ease-out both;
 
-}
- @-webkit-keyframes custom {
-  0% {
-    -webkit-transform: translateX(-800px) rotate(-540deg);
-            transform: translateX(-800px) rotate(-540deg);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateX(0) rotate(0deg);
-            transform: translateX(0) rotate(0deg);
-    opacity: 1;
-  }
-}
-@keyframes custom {
-  0% {
-    -webkit-transform: translateX(-800px) rotate(-540deg);
-            transform: translateX(-800px) rotate(-540deg);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateX(0) rotate(0deg);
-            transform: translateX(0) rotate(0deg);
-    opacity: 1;
-  }
+
+.event-form{
+  display: block;
+  flex-wrap: wrap;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  margin: 20px;
 }
 
 .button{
-  font-size: 25px;
-  color: hotpink;
+  font-size: 30px;
+  color: white;
+  font-weight: 500px;
+  -webkit-animation: title 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation: title 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 }
 
 .button:link { 
@@ -202,8 +222,8 @@ html {
 }
 
 #stars {
-  width: 1px;
-  height: 1px;
+  width: 1.5px;
+  height: 1.5px;
   background: transparent;
   animation: animStar 50s linear infinite;
   box-shadow: 779px 1331px #fff, 324px 42px #fff, 303px 586px #fff,
@@ -302,12 +322,6 @@ html {
   box-shadow: 779px 1331px #fff;
 }
 
-
-
-
-
-
-
 @keyframes animStar {
   from {
       transform: translateY(0px);
@@ -326,6 +340,7 @@ html {
 .new-comp-form{
   display: flex;
   justify-content: center;
+  
 }
 
 .competitor{
@@ -339,9 +354,7 @@ padding-top: 20px;
 color:white;
 }
 
-.username{
-  color: var(--primary-accent-color);
-}
+
 .score-center{
   display: flex;
   flex-direction: column;

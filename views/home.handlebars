@@ -3,13 +3,9 @@
 <h1 class="title"> Bragging Rights </h1>
 {{!-- 
 {{#each users as |user|}} --}}
-        <div id="stars"></div>
-        <div id="stars2"></div>
-        <div id="stars3"></div>
     <section class="container-fluid text-center py-4 custom">
       {{#if loggedIn}}
         {{> logout}}
-
         <a href="/scores" class="btn">scores</a>
 
         <a href="/scores">scores</a>
@@ -21,7 +17,10 @@
         <a href="/signup" class="button">signup</a>
       {{/if}}
     </section>
-
+    
+<div id="stars"></div>
+<div id="stars2"></div>
+<div id="stars3"></div>
 
 {{#if loggedIn}}
     <script src="/js/logout.js"></script>
