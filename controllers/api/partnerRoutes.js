@@ -1,7 +1,9 @@
 const router = require('express').Router();
 const Sequelize = require('sequelize');
 const {Op} = require('sequelize')
-// const helper = require('../../helper.helpers.js');
+const {findPartnersByUserID} = require('../../helper/helpers');
+const {findUsersByPartnerID} = require('../../helper/helpers');
+const {findUserByUserID} = require('../../helper/helpers');
 const { response } = require('express');
 const { User, UserPartners, Partners, Activities, Event } = require('../../models');
 
@@ -64,41 +66,6 @@ router.post('/', async (req, res) => {
     };
   });
 
-// moved to helper.js
-  async function findPartnersByUserID(userID) {
-    const userPartners = await UserPartners.findAll({
-      where: {
-        user_id: userID
-      },
-    });
-    return userPartners;
-  }
-
-  // Moved to helper.js
-  async function findUsersByPartnerID(partnerID, userID) {
-    let partnerData = await UserPartners.findAll({
-      where: {
-        partners_id: partnerID,
-      },
-    });
-    partnerData = partnerData.filter(partner => partner.dataValues.user_id != userID)
-    let result = []
-    for (let i = 0; i<partnerData.length; i++){
-      result.push(await findUserByUserID(partnerData[i].dataValues.user_id))
-    }
-    return result;
-  }
-
-  //Moved to helpler.js
-  async function findUserByUserID(userid) {
-    const user = await User.findOne({
-      where: {
-        id: userid
-      },
-    });
-    return user;
-  }
-
   // Get  partnerships by username
   router.get('/test/:username', async (req, res) => {
     try {
@@ -115,15 +82,36 @@ router.post('/', async (req, res) => {
       
       res.status(200).json({userData, partners, partnerships})
     } catch (err){
+      console.log(err)
       res.status(500).json(err);
     }
 });
 
 router.get('/', async (req, res) => {
   try {
-      const partnerData = await Partners.findAll();
-      res.status(200).json(partnerData);
+      let partnerData = await Activities.findAll({
+       include: [{model: Partners}]
+      
+      });
+      let partnerList = partnerData.map(partner => partner.dataValues.partners_id)
+      partnerList = [...new Set(partnerList)];
+      const dict = {}
+      console.log(partnerList)
+      for (let i = 0; i < partnerList.length; i++){
+        for (let j = 0; j<partnerData.length; j++){
+          console.log(partnerList[i], partnerData[j].dataValues.partners_id)
+          if(partnerList[i] in dict && partnerList[i] == partnerData[j].dataValues.partners_id){
+            dict[partnerList[i]].activities.push(partnerData[j].dataValues)
+          } else if (partnerList[i] == partnerData[j].dataValues.partners_id){
+            dict[partnerList[i]] = {activities: [partnerData[j].dataValues]}
+          }
+        }
+      }
+      console.log(dict)
+      partnerData.partnerActivities = dict
+      res.status(200).json({dict});
   } catch (err) {
+    console.log(err)
       res.status(500).json(err)
   }
 });

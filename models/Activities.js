@@ -15,6 +15,26 @@ Activities.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    date: {
+      type: DataTypes.DATEONLY,
+      allowNull: false,
+    },
+    userOne_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    userTwo_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    userOne_score: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    userTwo_score: {
+      type: DataTypes.INTEGER
+    },
+
   },
   {
     sequelize,
