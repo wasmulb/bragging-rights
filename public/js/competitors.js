@@ -11,12 +11,16 @@ function viewCompetitors(username){
     })
     
     .then(function (data) {
+      //check if fetch works
+        console.log("get partners here")
         console.log(data)
-
+        console.log(data.partnerships[0][0].username)
+        console.log(data.partnerships[1][0].username)
+      //create for loop to append to page
         for(var i= 0; i<data.length; i++){
             var compTag = document.createElement('a')
             compTag.classList.add("comp-tag")
-            console.log(data.user.dataValues.partnership[i].username)
+            //after user clicks on competitors send them to next screen
             compTag.innerText = data.user.dataValues.partnership[i].username;
 
             compSection.appendChild(compTag)

@@ -21,6 +21,7 @@ router.get('/scores', (req, res) => {
 
 router.get('/login', async (req,res)=>{
     console.log(req.session)
+    //refactored login, removed session data
       if(req.session.loggedIn){
           res.redirect('/');
           return;

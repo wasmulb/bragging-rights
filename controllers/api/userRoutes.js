@@ -99,6 +99,7 @@ router.post('/login', async(req,res)=>{
 
         //once user is logged in set up the logged in session 
         req.session.save(()=> {
+          //refactored user id by shortening to a variable
           console.log("logging user data",userData)
           req.session.username = userData.username
             req.session.loggedIn = true;
