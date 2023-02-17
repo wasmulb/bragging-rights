@@ -456,3 +456,7 @@ li{
 .scores{
   color:var(--light-color)
 }
+
+.eventScores{
+  color:var(--light-color)
+}
