@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  overflow-x: hidden;
+}
+
+canvas {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.details {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+
+.logo-text {
+ position: fixed;
+  z-index: 2;
+  color: #450920;
+  font-size: 5rem;
+ justify-content:center ;
+ align-items: center;
+ left:800px;
+ bottom: 400px;
+ right:150px;
+ justify-content: center;
+
+
+}
+.jumping-text {
+  position: fixed;
+  color: #ffffff;
+  font: Helvetica;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+
+
+@media screen and (max-width: 1024px) {
+  .logo-text {
+    font-size: 4rem;
+    right: 50%;
+    bottom: 25%;
+    transform: translate(50%, 50%);
+  }
+  h1 {
+    font-size: 4rem;
+  }
+}
+
+

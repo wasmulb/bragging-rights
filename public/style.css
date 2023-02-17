@@ -39,6 +39,15 @@
   color: white;
 }
 
+.event-form{
+  display: block;
+    flex-wrap: wrap;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    margin: 20px;
+}
+
 .btn{
   background-color: var(--primary-color);
   border: none;
@@ -152,34 +161,48 @@ animation: title 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
   }
 }
 
+.title1{
+  display: flex;
+flex-wrap: wrap;
+width: 100%;
+text-align: center;
+justify-content: center;
+margin-bottom: 15px;
+padding-top: 20px;
+color:white;
+font-size: 50px;
+}
+
 .custom{
   color: #450920;
   font-size: 20px;
-  -webkit-animation: custom 0.6s ease-out both;
-  animation: custom 0.6s ease-out both;
-
+  -webkit-animation: title 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation: title 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  
 }
- @-webkit-keyframes custom {
+
+@-webkit-keyframes custom {
   0% {
-    -webkit-transform: translateX(-800px) rotate(-540deg);
-            transform: translateX(-800px) rotate(-540deg);
+    letter-spacing: -0.5em;
     opacity: 0;
   }
+  40% {
+    opacity: 0.6;
+  }
   100% {
-    -webkit-transform: translateX(0) rotate(0deg);
-            transform: translateX(0) rotate(0deg);
     opacity: 1;
   }
 }
+
 @keyframes custom {
   0% {
-    -webkit-transform: translateX(-800px) rotate(-540deg);
-            transform: translateX(-800px) rotate(-540deg);
+    letter-spacing: -0.5em;
     opacity: 0;
   }
+  40% {
+    opacity: 0.6;
+  }
   100% {
-    -webkit-transform: translateX(0) rotate(0deg);
-            transform: translateX(0) rotate(0deg);
     opacity: 1;
   }
 }
@@ -303,12 +326,6 @@ html {
   box-shadow: 779px 1331px #fff;
 }
 
-
-
-
-
-
-
 @keyframes animStar {
   from {
       transform: translateY(0px);
@@ -318,12 +335,14 @@ html {
   }
 }
 
-.login{
-  display: flex;
-  justify-content: center;
-  color: #f8f9fb;
+.login-form{
+  display: block;
+    flex-wrap: wrap;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    margin: 20px;
 }
-
 .new-comp-form{
   display: flex;
   justify-content: center;
