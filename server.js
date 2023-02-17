@@ -24,11 +24,12 @@ const sess = {
 app.use(cookieParser())
 app.use(session(sess))
 
+// console.log(process.env.NODE_ENV)
+// if (process.env.NODE_ENV === 'production') {
 
-if (app.get('env') === 'production') {
-  app.set('trust proxy', 1) // trust first proxy
-  sess.cookie.secure = true // serve secure cookies
-}
+//   app.set('trust proxy', 1) // trust first proxy
+//   // sess?.cookie?.secure = true // serve secure cookies
+// }
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
