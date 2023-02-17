@@ -52,6 +52,13 @@
   background-color: var(--primary-color);
   border: none;
   margin-top: 10px;
+  color:var(--primary-background-color);
+  font-size: 30px;
+}
+
+#input-username::placeholder {
+  color: black
+
 }
 
 .btn:hover {
@@ -342,6 +349,7 @@ html {
     text-align: center;
     justify-content: center;
     margin: 20px;
+    color:var(--primary-background-color)
 }
 .new-comp-form{
   display: flex;
