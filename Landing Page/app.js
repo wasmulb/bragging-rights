@@ -59,12 +59,12 @@ document.body.appendChild(jumpingText);
 // Animate the jumping text
 gsap.to(jumpingText, {
   y: -20, // move the text 20px up
-  duration: 0.3, // animation duration
-  ease: "power2.inOut", // easing function
-  repeat: 1, // repeat the animation once
-  yoyo: true, // reverse the animation on repeat
+  duration: 0.7, // animation duration
+  ease: "power2.inOut", 
+  repeat: 6, 
+  yoyo: true, 
   onComplete: () => {
-    // Remove the jumping text from the document after 3 seconds
+   
     setTimeout(() => {
       document.body.removeChild(jumpingText);
     }, 3000);
