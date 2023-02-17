@@ -1,5 +1,5 @@
 //For displaying the logged in users competitors
-var compSection = document.getElementById('#comp-section')
+var compSection = document.getElementById('comp-section')
 
 var userID = 1
 let username;
@@ -23,9 +23,10 @@ function viewCompetitors(){
         for(var i= 0; i<data.partnerships.length; i++){
             var compTag = document.createElement('a')
             compTag.classList.add("comp-tag")
+            
             //after user clicks on competitors send them to next screen
             compTag.innerText = data.partnerships[i][0].username;
-            let compSection = document.getElementById('comp-section')
+            // let compSection = document.getElementById('comp-section')
             compSection.appendChild(compTag)
         };
     })

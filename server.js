@@ -4,7 +4,6 @@ const session = require('express-session');
 const path =require('path');
 const exphbs = require('express-handlebars')
 const hbs =exphbs.create({});
-const cookieParser = require('cookie-parser')
 const sequelize = require('./config/connection');
 
 
@@ -21,7 +20,6 @@ const sess = {
   saveUninitialized: true,
   };
 
-app.use(cookieParser())
 app.use(session(sess))
 
 
