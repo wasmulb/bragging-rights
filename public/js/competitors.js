@@ -75,6 +75,7 @@ const addCompetitor = async (event) => {
 }
 
 
+
 const partners_id=2
 var actSection = document.getElementById('act-section')
 function viewActivities(){
