@@ -3,7 +3,7 @@ new Chart(
     {
       type: 'radar',
       data: {
-        labels: ["Exercise", "Coding", "Reading", "Breathing"],
+        labels: ["tictactoe", "Coding", "Reading", "Breathing"],
         datasets: [
           {
             label: "Levi",
