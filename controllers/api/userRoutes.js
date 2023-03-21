@@ -70,14 +70,11 @@ router.post('/', async (req, res)=> {
             req.session.username =req.body.username
             
             res.status(200).json(userData);
-            console.log("userData" ,userData)
-        });  
-         //if user is already created send an error     
-    } catch (err){
-        res.status(500).json(err);
-    }
+    });
+  } catch (err) {
+    res.status(400).json(err);
+  }
 });
-
 
 //LOG IN 
 router.post('/login', async(req,res)=>{
