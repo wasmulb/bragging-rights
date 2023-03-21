@@ -1,6 +1,6 @@
 # Bragging Rights!
 
-## Link to deployed website: http://braggingrights.herokuapp.com/
+## Link to deployed website:
 
 ## Description
 
