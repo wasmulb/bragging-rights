@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 3001;
 // Middleware
 
 const sess = {
-  secret: process.env.SECRET,
+  secret: 'keyboard cat',
   resave: false,
   saveUninitialized: true,
   };
@@ -24,12 +24,11 @@ const sess = {
 app.use(cookieParser())
 app.use(session(sess))
 
-// console.log(process.env.NODE_ENV)
-// if (process.env.NODE_ENV === 'production') {
 
-//   app.set('trust proxy', 1) // trust first proxy
-//   // sess?.cookie?.secure = true // serve secure cookies
-// }
+if (app.get('env') === 'production') {
+  app.set('trust proxy', 1) // trust first proxy
+  sess.cookie.secure = true // serve secure cookies
+}
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
