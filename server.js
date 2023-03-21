@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 3001;
 // Middleware
 
 const sess = {
-  secret: 'keyboard cat',
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true,
   };
